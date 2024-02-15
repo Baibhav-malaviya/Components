@@ -1,4 +1,5 @@
 import { useId } from "react";
+import PropTypes from "prop-types";
 
 function Input({
 	name,
@@ -45,5 +46,19 @@ function Input({
 		</div>
 	);
 }
+
+Input.propTypes = {
+	name: PropTypes.string,
+	type: PropTypes.string.isRequired,
+	placeholder: PropTypes.string,
+	label: PropTypes.string,
+	className: PropTypes.string,
+	bgColor: PropTypes.string,
+	color: PropTypes.string,
+	width: PropTypes.string,
+	focus: PropTypes.bool,
+	onChange: PropTypes.func,
+	value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+};
 
 export default Input;
