@@ -6,26 +6,43 @@ function Row({
 	bgColor = "bg-orange-600",
 	color = "text-black",
 	tailwindClasses = "",
+	flex = false,
 	hover = true,
 	onClick,
-	hoverClasses = "hover:scale-105 hover:opacity-80 hover:shadow-md",
+	navbar = true,
+	hoverClasses = "hover:scale-105 hover:opacity-90 hover:shadow-md",
 	...props
 }) {
+	if (navbar)
+		return (
+			<nav
+				className={`h-auto px-3 py-2  flex   gap-2 items-center justify-between ${tailwindClasses} ${bgColor} ${color} ${width} ${
+					hover ? hoverClasses : ""
+				} ${flex ? "flex-wrap" : ""}`}
+				onClick={onClick}
+				{...props}
+			>
+				{children}
+			</nav>
+		);
+
 	return (
-		<div
-			className={`h-auto px-3 py-2  flex flex-wrap transit gap-2 items-center justify-between ${tailwindClasses} ${bgColor} ${color} ${width} ${
+		<nav
+			className={`h-auto px-3 py-2  flex   gap-2 items-center justify-between ${tailwindClasses} ${bgColor} ${color} ${width} ${
 				hover ? hoverClasses : ""
-			}`}
+			} ${flex ? "flex-wrap" : ""}`}
 			onClick={onClick}
 			{...props}
 		>
 			{children}
-		</div>
+		</nav>
 	);
 }
 
 Row.propTypes = {
 	children: PropTypes.node.isRequired,
+	flex: PropTypes.bool,
+	navbar: PropTypes.bool,
 	onClick: PropTypes.func,
 	hoverClasses: PropTypes.string,
 	width: PropTypes.string,
