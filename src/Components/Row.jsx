@@ -27,7 +27,7 @@ function Row({
 		);
 
 	return (
-		<nav
+		<div
 			className={`h-auto px-3 py-2  flex   gap-2 items-center justify-between ${tailwindClasses} ${bgColor} ${color} ${width} ${
 				hover ? hoverClasses : ""
 			} ${flex ? "flex-wrap" : ""}`}
@@ -35,7 +35,7 @@ function Row({
 			{...props}
 		>
 			{children}
-		</nav>
+		</div>
 	);
 }
 
